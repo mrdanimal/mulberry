@@ -4,6 +4,7 @@
   $btn-width : 145px;
   $btn-amount : 3;
   $padding: 10px;
+  $glow: #c8c8ff;
 
   @mixin nav-button($type) {
     .#{$type} {
@@ -12,7 +13,7 @@
 
     .#{$type}:active:before  {
       background: -webkit-radial-gradient(
-        center, $icon-width*.7 $icon-height*.7, rgba(200,200,255, .7), rgba(200,200,255, 0)
+        center, $icon-width*.7 $icon-height*.7, transparentize($glow, .7), transparentize($glow, 1)
       );
     }
   }
