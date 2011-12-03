@@ -11,7 +11,7 @@
 
     .#{$type}:active:before  {
       background: -webkit-radial-gradient(
-        white, transparent
+        center, $icon-width $icon-height, rgba(255,255,255, .5), rgba(255,255,255, 0)
       );
     }
   }
@@ -38,9 +38,7 @@
     li {
       -webkit-box-flex: 1;
       width: $btn-width;
-          background-image: -webkit-radial-gradient(
-            50% 50%, ellipse closest-side, #aaa, #00f, 33%
-          );
+      overflow: visible;
 
       a {
         height: $icon-height/2;
@@ -50,10 +48,11 @@
           position: absolute;
           display: block;
           z-index: 1;
-          height: $icon-height;
-          width: $icon-width;
+          height: $icon-height*2;
+          width: $icon-width*2;
           left: 50%;
-          margin-left: - $icon-width/2;
+          margin-left: - $icon-width;
+          margin-top: - $icon-height;
         }
       }
     }
