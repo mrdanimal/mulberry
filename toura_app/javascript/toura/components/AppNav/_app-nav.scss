@@ -9,8 +9,8 @@
       background: url(../icons/light/btn-app-nav-#{$type}.png) no-repeat center center;
     }
 
-    .#{$type}:active {
-      background: url(../icons/dark/btn-app-nav-#{$type}.png) no-repeat center center;
+    .#{$type}:active:before  {
+      background-color: red;
     }
   }
 
@@ -39,6 +39,17 @@
 
       a {
         height: $icon-height/2;
+
+        &:before {
+          content: "";
+          position: absolute;
+          display: block;
+          z-index: 1;
+          height: $icon-height/2;
+          width: $icon-width/2;
+          left: 50%;
+          margin-left: - $icon-width/4;
+        }
       }
     }
   }
