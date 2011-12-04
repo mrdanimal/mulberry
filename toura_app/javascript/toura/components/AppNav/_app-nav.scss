@@ -20,6 +20,12 @@
   }
 
   @mixin nav-buttons($button-names) {
+    a {
+      display: block;
+      text-indent: -9999px;
+      -webkit-background-size: contain;
+    }
+
     @each $button in $button-names {
       @include nav-button($button);
     }
@@ -49,11 +55,6 @@
 
     @include nav-buttons($button-names);
 
-    a {
-      display: block;
-      text-indent: -9999px;
-      -webkit-background-size: contain;
-    }
   }
 
 
