@@ -19,7 +19,7 @@
     }
   }
 
-  @mixin nav-buttons() {
+  @mixin nav-buttons($button-names) {
     @each $button in $button-names {
       @include nav-button($button);
     }
@@ -47,7 +47,7 @@
     display: -webkit-box;
     -webkit-box-orient: horizontal;
 
-    @include nav-buttons();
+    @include nav-buttons($button-names);
 
     a {
       display: block;
