@@ -1,5 +1,35 @@
 .component.page-nav {
   color: #fff;
+  $button-names: back, home, menu, search, more;
+
+  @mixin page-nav-button($type) {
+    & a {
+      -webkit-background-size: contain;
+    }
+
+    &.#{$type} a {
+      background: url(../icons/light/btn-page-nav-#{$type}.png) no-repeat;
+      background-position-y: center;
+    }
+
+    &.#{$type} a:active {
+      background-image: url(../icons/dark/btn-page-nav-#{$type}.png);
+    }
+
+    &.#{$type}:first-child a {
+      background-position-x: left;
+    }
+
+    &.#{$type}:last-child a {
+      background-position-x: right;
+    }
+  }
+
+  @mixin page-nav-buttons() {
+    @each $name in $button-names {
+      @include page-nav-button($name);
+    }
+  }
 
   > .top {
     @include chrome-gradient-flat;
@@ -14,11 +44,7 @@
       }
 
       li {
-        @include page-nav-button(back);
-        @include page-nav-button(home);
-        @include page-nav-button(menu);
-        @include page-nav-button(search);
-        @include page-nav-button(more);
+        @include page-nav-buttons();
       }
     }
   }

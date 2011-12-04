@@ -113,31 +113,6 @@
   -webkit-box-shadow: $x-offset $y-offset 5px 0 rgba(0, 0, 0, .5);
 }
 
-
-@mixin page-nav-button($type) {
-
-  & a {
-    -webkit-background-size: contain;
-  }
-
-  &.#{$type} a {
-    background: url(../icons/light/btn-page-nav-#{$type}.png) no-repeat;
-    background-position-y: center;
-  }
-
-  &.#{$type} a:active {
-    background-image: url(../icons/dark/btn-page-nav-#{$type}.png);
-  }
-
-  &.#{$type}:first-child a {
-    background-position-x: left;
-  }
-
-  &.#{$type}:last-child a {
-    background-position-x: right;
-  }
-}
-
 @mixin asset-icon($type) {
   &.#{$type} a {
     background: {
