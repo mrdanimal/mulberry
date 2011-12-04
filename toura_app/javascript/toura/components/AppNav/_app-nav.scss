@@ -18,6 +18,12 @@
     }
   }
 
+  @mixin nav-buttons() {
+    @each $button in contents, search, maps, about, favorites {
+      @include nav-button($button);
+    }
+  }
+
   overflow: visible;
 
   ol {
@@ -33,11 +39,7 @@
     -webkit-background-size: contain;
   }
 
-  @include nav-button(contents);
-  @include nav-button(search);
-  @include nav-button(maps);
-  @include nav-button(about);
-  @include nav-button(favorites);
+  @include nav-buttons();
 
   .phone & {
     li {
