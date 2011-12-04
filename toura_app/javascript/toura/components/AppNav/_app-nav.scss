@@ -5,6 +5,7 @@
   $btn-amount : 3;
   $padding: 10px;
   $glow: #c8c8ff;
+  $button-names: contents, search, maps, about, favorites;
 
   @mixin nav-button($type) {
     .#{$type} {
@@ -19,7 +20,7 @@
   }
 
   @mixin nav-buttons() {
-    @each $button in contents, search, maps, about, favorites {
+    @each $button in $button-names {
       @include nav-button($button);
     }
   }
@@ -60,7 +61,6 @@
           left: 50%;
           margin-left: - $icon-width;
           margin-top: - $icon-height + $padding;
-
         }
       }
     }
@@ -69,14 +69,28 @@
   .tablet & {
     width: $btn-width * $btn-amount - 1;
     margin: 0 auto 20px auto;
+    overflow: visible;
 
     li {
       -webkit-box-flex: 1;
       height: $icon-height;
       width: $btn-width;
+      overflow: visible;
 
       a {
         height: $icon-height;
+
+        &:before {
+          content: "";
+          position: absolute;
+          display: block;
+          z-index: 1;
+          height: $icon-height*4;
+          width: $icon-width*4;
+          left: 50%;
+          margin-left: - $icon-width*2;
+          margin-top: - $icon-height*2 + 20px;
+        }
       }
     }
   }
