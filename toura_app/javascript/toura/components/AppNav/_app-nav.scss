@@ -39,7 +39,6 @@
     }
   }
 
-
   overflow: visible;
 
   ol {
@@ -90,17 +89,12 @@
       a {
         height: $icon-height;
 
-        &:before {
-          content: "";
-          position: absolute;
-          display: block;
-          z-index: 1;
-          height: $icon-height*4;
-          width: $icon-width*4;
-          left: 50%;
-          margin-left: - $icon-width*2;
-          margin-top: - $icon-height*2 + 20px;
-        }
+        @include overlay(
+          $width: $icon-width*4,
+          $height: $icon-height*4,
+          $margin-left: -$icon-width*2,
+          $margin-top: -$icon-height*2 + 20px
+        )
       }
     }
   }
