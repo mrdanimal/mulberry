@@ -25,6 +25,21 @@
     }
   }
 
+  @mixin overlay($width, $height, $margin-left, $margin-top) {
+    &:before {
+      content: "";
+      position: absolute;
+      display: block;
+      z-index: 1;
+      height: $height;
+      width: $width;
+      left: 50%;
+      margin-left: $margin-left;
+      margin-top: $margin-top;
+    }
+  }
+
+
   overflow: visible;
 
   ol {
@@ -51,17 +66,12 @@
       a {
         height: $icon-height/2;
 
-        &:before {
-          content: "";
-          position: absolute;
-          display: block;
-          z-index: 1;
-          height: $icon-height*2;
-          width: $icon-width*2;
-          left: 50%;
-          margin-left: - $icon-width;
-          margin-top: - $icon-height + $padding;
-        }
+        @include overlay(
+          $width: $icon-width*2,
+          $height: $icon-height*2,
+          $margin-left: -$icon-width,
+          $margin-top: -$icon-height + $padding
+        )
       }
     }
   }
