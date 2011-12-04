@@ -8,11 +8,11 @@
   $button-names: contents, search, maps, about, favorites;
 
   @mixin nav-button($type) {
-    .#{$type} {
+    a.#{$type} {
       background: url(../icons/light/btn-app-nav-#{$type}.png) no-repeat center center;
     }
 
-    .#{$type}:active:before  {
+    a.#{$type}:active:before  {
       background: -webkit-radial-gradient(
         center, $icon-width*.7 $icon-height*.7, transparentize($glow, .7), transparentize($glow, 1)
       );
@@ -46,15 +46,16 @@
     padding: $padding;
     display: -webkit-box;
     -webkit-box-orient: horizontal;
+
+    @include nav-buttons();
+
+    a {
+      display: block;
+      text-indent: -9999px;
+      -webkit-background-size: contain;
+    }
   }
 
-  a {
-    display: block;
-    text-indent: -9999px;
-    -webkit-background-size: contain;
-  }
-
-  @include nav-buttons();
 
   .phone & {
     li {
