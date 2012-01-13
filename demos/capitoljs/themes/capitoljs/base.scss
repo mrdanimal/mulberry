@@ -1,14 +1,17 @@
+@import 'settings';
 @import 'helpers/mixins';
 @import 'helpers/colors';
 @import 'helpers/forms';
 
+@import 'splash';
+
 body {
-  @include text-color;
-  font-family: Helvetica Neue, sans-serif;
+  color: $text-color;
+  font-family: $base-font;
 }
 
 a:link, a:active, a:visited {
-  color: $user-link-color;
+  color: $link-color;
 }
 
 h2 {
@@ -16,5 +19,5 @@ h2 {
 }
 
 @import 'components/base';
-@import 'templates/base';
+@import 'page_defs/base';
 @import 'pages';

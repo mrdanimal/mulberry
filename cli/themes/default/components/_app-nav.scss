@@ -1,0 +1,115 @@
+.component.app-nav {
+  $icon-width: 60px;
+  $icon-height: 50px;
+  $btn-width : 145px;
+  $btn-amount : 3;
+  $padding: 10px;
+  $glow: #c8c8ff;
+  $button-names: contents, search, maps, about, favorites;
+
+  @include chrome-gradient;
+  @include box-shadow(0, 1px);
+
+  @mixin nav-button($type) {
+    a.#{$type} {
+      background: url(resources/icons/light/btn-app-nav-#{$type}.png) no-repeat center center;
+    }
+
+    a.#{$type}:active:before  {
+      background: -webkit-radial-gradient(
+        center, $icon-width*.7 $icon-height*.7, transparentize($glow, .7), transparentize($glow, 1)
+      );
+    }
+  }
+
+  @mixin nav-buttons($button-names) {
+    a {
+      display: block;
+      text-indent: -9999px;
+      -webkit-background-size: contain;
+    }
+
+    @each $button in $button-names {
+      @include nav-button($button);
+    }
+  }
+
+  @mixin overlay($width, $height, $margin-left, $margin-top) {
+    &:before {
+      content: "";
+      position: absolute;
+      display: block;
+      z-index: 1;
+      height: $height;
+      width: $width;
+      left: 50%;
+      margin-left: $margin-left;
+      margin-top: $margin-top;
+    }
+  }
+
+  overflow: visible;
+
+  ol {
+    overflow: visible;
+    padding: $padding;
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+
+    @include nav-buttons($button-names);
+  }
+
+  .phone & {
+    li {
+      -webkit-box-flex: 1;
+      width: $btn-width;
+      overflow: visible;
+
+      a {
+        height: $icon-height/2;
+
+        @include overlay(
+          $width: $icon-width*2,
+          $height: $icon-height*2,
+          $margin-left: -$icon-width,
+          $margin-top: -$icon-height + $padding
+        )
+      }
+    }
+  }
+
+  .tablet & {
+    width: $btn-width * $btn-amount - 1;
+    margin: 0 auto 20px auto;
+    overflow: visible;
+
+    li {
+      -webkit-box-flex: 1;
+      height: $icon-height;
+      width: $btn-width;
+      overflow: visible;
+
+      a {
+        height: $icon-height;
+
+        @include overlay(
+          $width: $icon-width*4,
+          $height: $icon-height*4,
+          $margin-left: -$icon-width*2,
+          $margin-top: -$icon-height*2 + 20px
+        )
+      }
+    }
+  }
+  .tablet & {
+    -webkit-border-radius: 5px;
+
+    li {
+      border-right: 1px solid $chrome-border-color;
+
+      &:last-child {
+        border-right: none;
+      }
+    }
+  }
+}

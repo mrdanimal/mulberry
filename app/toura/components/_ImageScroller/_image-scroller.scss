@@ -1,0 +1,34 @@
+.component.image-scroller {
+  @include flex-row-container;
+  @include pullout;
+
+  ol.indicator {
+    line-height: 0;
+    overflow: visible;
+  }
+
+  .wrapper {
+    @include flex-row-container;
+
+    ol.images {
+      @include pullout;
+
+      li {
+        height: 100%;
+        float: left;
+        text-align: center;
+        // width set by component js
+
+        @include flex-row-container;
+        -webkit-box-pack: center;
+
+        .image {
+          // @implement -webkit-background-size;
+          -webkit-box-flex: 1;
+          background: no-repeat center center;
+          -webkit-transform: translate3d(0,0,0);
+        }
+      }
+    }
+  }
+}

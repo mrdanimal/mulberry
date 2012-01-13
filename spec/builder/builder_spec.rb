@@ -1,4 +1,6 @@
-require File.join(File.expand_path(File.dirname(__FILE__)), '../../lib/builder')
+require 'spec_helper'
+require "builder"
+require 'fakeweb'
 
 describe Builder::Build do
   before(:each) do
@@ -99,58 +101,7 @@ describe Builder::Build do
     end
   end
 
-
-  describe "gathering step" do
-    it "should do nothing if no gathering tasks are specified" do
-      b = Builder::Build.new(@config.merge({
-        :target_config => {
-          'build_type' => 'fake'
-        }
-      }))
-
-      b.build
-
-      b.completed_steps[:build].keys.length.should == 0
-
-      b.cleanup
-    end
-
-    it "should gather www icons if specified" do
-      b = Builder::Build.new(@config.merge({
-        :target_config => {
-          'build_type' => 'device',
-          'gather' => {
-            'www_icons' => true
-          }
-        }
-      }))
-
-      b.build
-
-      www_icons = b.completed_steps[:gather][:www_icons]
-      www_icons.should_not be_nil
-      www_icons[:location].should_not be_nil
-      www_icons[:files].should_not be_nil
-
-      b.cleanup
-    end
-  end
-
   describe "build step" do
-    it "should do nothing if no build tasks are specified" do
-      b = Builder::Build.new(@config.merge({
-        :target_config => {
-          'build_type' => 'fake'
-        }
-      }))
-
-      b.build
-
-      b.completed_steps[:build].keys.length.should == 0
-
-      b.cleanup
-    end
-
     it "should kick off js build if javascript layers are specified" do
       b = Builder::Build.new(@config.merge({
         :skip_js_build => false,
@@ -168,29 +119,10 @@ describe Builder::Build do
 
       js.should_not be_nil
       js[:location].should_not be_nil
-      js[:profile].should_not be_nil
       js[:build_contents].should_not be_nil
 
       File.exists?(File.join(js[:location], 'dojo', 'dojo.js')).should_not be_nil
       File.exists?(File.join(js[:location], 'toura', 'base.js')).should_not be_nil
-
-      b.cleanup
-    end
-
-    it "should ensure haml ends up unminified" do
-      b = Builder::Build.new(@config.merge({
-        :skip_js_build => false,
-        :target_config => {
-          'build_type' => 'fake',
-          'build' => {
-            'javascript' => [ 'dojo' ]
-          }
-        }
-      }))
-
-      b.build
-
-      js = b.completed_steps[:build][:javascript]
 
       haml = File.join(js[:location], 'vendor', 'haml.js')
       File.exists?(haml).should_not be_nil
@@ -240,6 +172,7 @@ describe Builder::Build do
       index_html = File.read(File.join(html[:location], 'index.html'))
       index_html.should_not match 'phonegap'
     end
+
   end
 
   describe "closing" do
@@ -261,4 +194,55 @@ describe Builder::Build do
     describe "bundled builds" do
     end
   end
+
+  describe "ota" do
+
+    class FakeBuildHelper
+      def build=(b) end
+      def before_steps() [] end
+      def after_steps() [] end
+      def data() {"foo" => "bar"} end
+      def ota_enabled?() true end
+    end
+
+    after :each do
+      FakeWeb.clean_registry
+    end
+
+    describe "enabled" do
+
+      before :each do
+        @build = Builder::Build.new(@config.merge({
+          :build_helper => FakeBuildHelper.new,
+          :target_config => {
+            'build_type' => 'device',
+            'gather' => {
+              'data' => true
+            },
+            'ota' => {
+              'enabled' => true
+            }
+          },
+          :toura_api_config => {
+            'url' => 'https://api.toura.com',
+            'key' => 'a_key',
+            'secret' => 'a_secret'
+          }
+        }))
+      end
+
+      after :each do
+        @build.cleanup
+      end
+
+      it "should report tour json location if ota enabled" do
+        FakeWeb.register_uri(:get, //, :body => "{\"version\": 1}")
+        @build.build
+        data_report = @build.completed_steps[:gather][:data]
+        data_report[:tour_json_location].should_not be_nil
+      end
+    end
+
+  end
+
 end

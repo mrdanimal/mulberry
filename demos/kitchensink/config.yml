@@ -23,17 +23,12 @@
 #     ANY RIGHTS NOT EXPRESSLY GRANTED ARE HEREBY RESERVED BY TOURA, LLC.
 
 # Enter your application name here (required!)
-name: mulberry_kitchensink
+name: mulberry's kitchensink
 
 # Presently there is only one theme, the default theme. We need to document how
 # to create additional themes.
 theme:
   name: default
-  settings:
-    font-scheme:        'dark'
-    link-color:         '#0000ff'
-    background-color:   '#fff'
-    child-nav-color:    '#fff'
 
 os:
   # Specify the operating systems to target
