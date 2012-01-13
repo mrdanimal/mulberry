@@ -4,7 +4,7 @@
   $btn-width : 145px;
   $btn-amount : 3;
   $padding: 10px;
-  $glow: #c8c8ff;
+  $glow: $chrome-glow-color;
   $button-names: contents, search, maps, about, favorites;
 
   @include chrome-gradient;

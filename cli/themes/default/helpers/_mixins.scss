@@ -279,11 +279,9 @@
   }
 }
 
-@mixin page-nav-button($type) {
+@mixin page-nav-button($type, $glow: #fff) {
   $icon-height: 40px;
   $icon-width: 40px;
-
-  $glow: #c8c8ff;
 
   overflow: visible;
 
