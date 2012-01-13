@@ -34,19 +34,6 @@
     }
   }
 
-  @mixin overlay($width, $height, $margin-left, $margin-top) {
-    &:before {
-      content: "";
-      position: absolute;
-      display: block;
-      z-index: 1;
-      height: $height;
-      width: $width;
-      left: 50%;
-      margin-left: $margin-left;
-      margin-top: $margin-top;
-    }
-  }
 
   overflow: visible;
 
@@ -68,7 +55,7 @@
       a {
         height: $icon-height/2;
 
-        @include overlay(
+        @include overlay-before(
           $width: $icon-width*2,
           $height: $icon-height*2,
           $margin-left: -$icon-width,
@@ -92,7 +79,7 @@
       a {
         height: $icon-height;
 
-        @include overlay(
+        @include overlay-before(
           $width: $icon-width*4,
           $height: $icon-height*4,
           $margin-left: -$icon-width*2,

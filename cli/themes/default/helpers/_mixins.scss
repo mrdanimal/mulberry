@@ -285,6 +285,8 @@
 
   $glow: #c8c8ff;
 
+  overflow: visible;
+
   & a {
     -webkit-background-size: contain;
   }
@@ -294,14 +296,19 @@
     background-position-y: center;
   }
 
-  &.#{$type} a:active {
-    background-image: url(resources/icons/dark/btn-page-nav-#{$type}.png);
-  }
-
-  a.#{$type}:active:before  {
+  a:active:before  {
     background: -webkit-radial-gradient(
       center, $icon-width*.7 $icon-height*.7, transparentize($glow, .7), transparentize($glow, 1)
     );
+  }
+
+  a {
+    @include overlay-before(
+      $width: $icon-width*4,
+      $height: $icon-height*4,
+      $margin-left: -$icon-width*2,
+      $margin-top: -$icon-height*2 + 20px
+    )
   }
 
   &.#{$type}:first-child a {
@@ -310,5 +317,19 @@
 
   &.#{$type}:last-child a {
     background-position-x: right;
+  }
+}
+
+@mixin overlay-before($width, $height, $margin-left, $margin-top) {
+  &:before {
+    content: "";
+    position: absolute;
+    display: block;
+    z-index: 1;
+    height: $height;
+    width: $width;
+    left: 50%;
+    margin-left: $margin-left;
+    margin-top: $margin-top;
   }
 }
