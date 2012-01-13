@@ -174,7 +174,7 @@ dojo.declare('toura._Component', [ toura._View ], {
 
   _setupTouch : function(ele, handler) {
     var touch = toura.app.UI.hasTouch,
-        evt = touch ? 'touchstart' : 'click';
+        evt = touch ? 'touchend' : 'click';
 
     this.connect(ele, evt, handler);
     if (touch) { this.connect(ele, 'click', function(e) { e.preventDefault(); }); }
