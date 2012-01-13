@@ -42,7 +42,7 @@
       }
 
       @each $name in $button-names {
-        @include page-nav-button($name);
+        @include page-nav-button($name, $chrome-glow-color);
       }
     }
   }
