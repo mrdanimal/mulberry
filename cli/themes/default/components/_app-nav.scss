@@ -66,6 +66,7 @@
   }
 
   .tablet & {
+    -webkit-border-radius: 5px;
     width: $btn-width * $btn-amount - 1;
     margin: 0 auto 20px auto;
     overflow: visible;
@@ -75,6 +76,11 @@
       height: $icon-height;
       width: $btn-width;
       overflow: visible;
+      border-right: 1px solid $chrome-border-color;
+
+      &:last-child {
+        border-right: none;
+      }
 
       a {
         height: $icon-height;
@@ -85,17 +91,6 @@
           $margin-left: -$icon-width*2,
           $margin-top: -$icon-height*2 + 20px
         )
-      }
-    }
-  }
-  .tablet & {
-    -webkit-border-radius: 5px;
-
-    li {
-      border-right: 1px solid $chrome-border-color;
-
-      &:last-child {
-        border-right: none;
       }
     }
   }
