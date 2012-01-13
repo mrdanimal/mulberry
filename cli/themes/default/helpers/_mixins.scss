@@ -298,10 +298,8 @@
     background: -webkit-radial-gradient(
       center, $icon-width*.7 $icon-height*.7, transparentize($glow, .7), transparentize($glow, 1)
     );
-  }
 
-  a {
-    @include overlay-before(
+    @include overlay(
       $width: $icon-width*4,
       $height: $icon-height*4,
       $margin-left: -$icon-width*2,
@@ -318,16 +316,14 @@
   }
 }
 
-@mixin overlay-before($width, $height, $margin-left, $margin-top) {
-  &:before {
-    content: "";
-    position: absolute;
-    display: block;
-    z-index: 1;
-    height: $height;
-    width: $width;
-    left: 50%;
-    margin-left: $margin-left;
-    margin-top: $margin-top;
-  }
+@mixin overlay($width, $height, $margin-left, $margin-top) {
+  content: "";
+  position: absolute;
+  display: block;
+  z-index: 1;
+  height: $height;
+  width: $width;
+  left: 50%;
+  margin-left: $margin-left;
+  margin-top: $margin-top;
 }

@@ -55,12 +55,14 @@
       a {
         height: $icon-height/2;
 
-        @include overlay-before(
-          $width: $icon-width*2,
-          $height: $icon-height*2,
-          $margin-left: -$icon-width,
-          $margin-top: -$icon-height + $padding
-        )
+        &:before {
+          @include overlay(
+            $width: $icon-width*2,
+            $height: $icon-height*2,
+            $margin-left: -$icon-width,
+            $margin-top: -$icon-height + $padding
+          )
+        }
       }
     }
   }
@@ -85,12 +87,14 @@
       a {
         height: $icon-height;
 
-        @include overlay-before(
-          $width: $icon-width*4,
-          $height: $icon-height*4,
-          $margin-left: -$icon-width*2,
-          $margin-top: -$icon-height*2 + 20px
-        )
+        &:before {
+          @include overlay(
+            $width: $icon-width*4,
+            $height: $icon-height*4,
+            $margin-left: -$icon-width*2,
+            $margin-top: -$icon-height*2 + 20px
+          )
+        }
       }
     }
   }
