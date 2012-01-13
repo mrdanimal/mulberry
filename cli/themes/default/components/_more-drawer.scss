@@ -1,4 +1,6 @@
 .component.more-drawer {
+  $button-names: home, font-size, search, twitter, facebook, email;
+
   background-image: -webkit-gradient(
     linear, 0% 0%, 0% 100%,
     from(darken($chrome-color, 2%)),
@@ -39,12 +41,9 @@
         }
       }
 
-      @include page-nav-button(home);
-      @include page-nav-button(font-size);
-      @include page-nav-button(search);
-      @include page-nav-button(twitter);
-      @include page-nav-button(facebook);
-      @include page-nav-button(email);
+      @each $name in $button-names {
+        @include page-nav-button($name);
+      }
     }
   }
 }
