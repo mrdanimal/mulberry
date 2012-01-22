@@ -1,9 +1,13 @@
 ---
-title: Single Image Gallery
+title: Puppies in baskets
 page_def:
   phone: images-and-text-phone
   tablet: images-and-text-tablet
 
 images:
-  - wiry.jpg
+  - puppy-basket.jpg
+  - puppy-basket-2.jpg
+  - puppy-basket-3.jpg
+  - puppy-basket-4.jpg
+
 ---
