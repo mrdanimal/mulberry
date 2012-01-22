@@ -1,5 +1,5 @@
 ---
-title: Feed List
+title: BoingBoing Feed
 page_def:
   phone: feed-list-phone
   tablet: feed-list-tablet
