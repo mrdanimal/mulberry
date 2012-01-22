@@ -4,7 +4,6 @@ page_def:
   phone: feed-list-phone
   tablet: feed-list-tablet
 
-header_image: bangs.jpg
 
 feeds:
   - techcrunch.yml
