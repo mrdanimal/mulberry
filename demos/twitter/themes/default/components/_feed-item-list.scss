@@ -84,13 +84,3 @@
   }
 }
 
-@media (orientation:portrait) {
-  .component.feed-item-list {
-    .tablet & {
-      .summary,
-      .image {
-        display: none;
-      }
-    }
-  }
-}
