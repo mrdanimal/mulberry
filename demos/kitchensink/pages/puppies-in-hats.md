@@ -1,5 +1,5 @@
 ---
-title: puppies-in-hats
+title: Puppies in hats
 page_def:
   phone: default
   tablet: default

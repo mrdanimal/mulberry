@@ -1,5 +1,5 @@
 ---
-title: puppies-playing-sports
+title: Puppies playing sports
 page_def:
   phone: default
   tablet: default
