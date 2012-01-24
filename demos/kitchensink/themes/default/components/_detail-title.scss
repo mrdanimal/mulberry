@@ -1,21 +1,22 @@
 .component.detail-title {
-  @include nav;
 
-  display: -webkit-box;
-  -webkit-box-orient: horizontal;
-  -webkit-box-align: center;
+  z-index: 1;
+  @include nav;
+  @include fade(hidden);
 
   h1 {
-    display: block;
-    -webkit-box-flex: 1;
+    float: right;
     text-align: right;
     font-weight: normal;
-    padding-right: 12px;
+    padding: 12px;
   }
 
   .close {
+    position: absolute;
+    width: 32px;
+    height: 32px;
     @include icon('resources/icons/light/btn-page-nav-close.png', 32px, 32px);
-    padding-left: 12px;
+    padding: 0 12px 12px 12px;
 
     &:active {
       @include icon('resources/icons/dark/btn-page-nav-close.png', 32px, 32px);

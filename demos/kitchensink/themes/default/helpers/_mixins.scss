@@ -278,3 +278,13 @@
     @include fixed-flex-region;
   }
 }
+
+@mixin fade($class-name: hidden) {
+  opacity: 1;
+  -webkit-transition: opacity .3s ease-in;
+
+  &.#{$class-name} {
+    opacity: 0;
+    display: block !important;
+  }
+}

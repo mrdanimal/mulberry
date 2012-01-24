@@ -20,6 +20,10 @@
       > * {
         width: 100%;
       }
+
+      .component.detail-title {
+//        @include hide-fade;
+      }
     }
   }
 }
