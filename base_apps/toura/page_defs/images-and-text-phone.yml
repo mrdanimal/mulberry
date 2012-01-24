@@ -1,6 +1,5 @@
 images-and-text-phone:
   capabilities:
-  - ImageGallery_ImageCaption
   - ImageGalleryDetail
   - Page_Images
 
@@ -19,7 +18,6 @@ images-and-text-phone:
       - scrollable: true
         components:
         - ChildNodes
-        - ImageCaption
         - BodyText
 
     - name: detail

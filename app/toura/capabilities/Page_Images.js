@@ -5,7 +5,6 @@ dojo.require('toura._Capability');
 dojo.declare('toura.capabilities.Page_Images', toura._Capability, {
   requirements : {
     imageGallery : 'ImageGallery',
-    imageCaption : 'ImageCaption'
   },
 
   connects : [
@@ -33,10 +32,6 @@ dojo.declare('toura.capabilities.Page_Images', toura._Capability, {
       this.connect(this.imageGallery, 'startup', function() {
         this.imageGallery.scrollToIndex(index);
       });
-    }
-
-    if (this.imageCaption) {
-      this.imageCaption.set('content', image.caption || '');
     }
   }
 });
