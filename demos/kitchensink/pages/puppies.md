@@ -1,5 +1,5 @@
 ---
-title: Image Gallery
+title: Puppies!
 page_def:
   phone: images-and-text-phone
   tablet: images-and-text-tablet

@@ -1,33 +1,10 @@
 - home:
-  - audio_list:
-    - single_image_gallery
-    - generic_child_page
-    - audio_list_childless
-  - image_gallery:
+  - puppies:
     - single_image_gallery
     - generic_child_page
     - image_gallery_no_child
-  - fullscreen_images
-  - feed_list
-  - locations
-  - location_map
-  - node_gallery:
-    - node_gallery_child_1
-    - node_gallery_child_2
-    - node_gallery_child_3
-  - videos:
-    - single_image_gallery
-    - generic_child_page
-    - videos_childless
-  - grid:
-    - grid_child_one:
-      - grid_child_two
-      - grid_child_three
-    - grid_child_two
-    - grid_child_three
-    - grid_child_four
-    - grid_child_five
-    - grid_child_six
-  - default_template
+  - kittens
+  - monkeys
+
 - about:
     - subpage
