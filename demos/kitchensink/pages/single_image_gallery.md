@@ -1,7 +1,7 @@
 ---
 title: Puppies in baskets
 page_def:
-  phone: images-and-text-phone
+  phone: images-with-caption
   tablet: images-and-text-tablet
 
 images:
