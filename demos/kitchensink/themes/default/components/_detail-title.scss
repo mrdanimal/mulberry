@@ -2,7 +2,6 @@
 
   z-index: 1;
   @include nav;
-  @include fade(hidden);
 
   h1 {
     float: right;

@@ -22,7 +22,7 @@
       }
 
       .component.detail-title {
-//        @include hide-fade;
+        @include fade(hidden);
       }
     }
   }

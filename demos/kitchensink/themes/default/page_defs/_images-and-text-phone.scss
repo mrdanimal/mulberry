@@ -21,5 +21,9 @@
         width: 100%;
       }
     }
+
+    .component.detail-title {
+      @include fade(hidden);
+    }
   }
 }
