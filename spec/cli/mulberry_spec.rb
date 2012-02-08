@@ -5,11 +5,9 @@ describe Mulberry::App do
   before :each do
     Mulberry::App.scaffold('testapp', true)
     @app = Mulberry::App.new 'testapp'
-    @initial_dir = Dir.pwd
   end
 
   after :each do
-    Dir.chdir @initial_dir
     FileUtils.rm_rf 'testapp'
   end
 
@@ -42,6 +40,7 @@ describe Mulberry::App do
         [ 'assets', 'locations' ],
         [ 'assets', 'data' ],
         [ 'assets', 'feeds' ],
+        [ 'assets', 'html' ],
         [ 'assets', 'audios', 'captions' ],
         [ 'assets', 'videos', 'captions' ],
         [ 'assets', 'images', 'captions' ],
@@ -88,23 +87,21 @@ describe Mulberry::App do
     end
 
     it "should build the files for serving as a static site" do
-      [ 'web-phone', 'web-tablet' ].each do |subdir|
-        build_dir = File.join(@app.source_dir, 'builds', subdir, 'www')
-        File.exists?(build_dir).should be_true
+      build_dir = File.join(@app.source_dir, 'builds', 'browser', 'www')
+      File.exists?(build_dir).should be_true
 
-        [
-          'index.html',
-          [ 'media', 'manifest.js' ],
-          [ 'css', 'base.css' ],
-          [ 'data', 'tour.js' ],
-          [ 'data', 'pagedefs.js' ],
-          [ 'javascript', 'dojo', 'dojo.js' ],
-          [ 'javascript', 'toura', 'base.js' ],
-          [ 'javascript', 'toura', 'app', 'TouraConfig.js' ],
-          [ 'javascript', 'client', 'base.js' ]
-        ].each do |dir|
-          File.exists?(File.join(build_dir, dir)).should be_true
-        end
+      [
+        'index.html',
+        [ 'media', 'manifest.js' ],
+        [ 'css', 'base.css' ],
+        [ 'data', 'tour.js' ],
+        [ 'data', 'pagedefs.js' ],
+        [ 'javascript', 'dojo', 'dojo.js' ],
+        [ 'javascript', 'toura', 'base.js' ],
+        [ 'javascript', 'toura', '_Config.js' ],
+        [ 'javascript', 'client', 'base.js' ]
+      ].each do |dir|
+        File.exists?(File.join(build_dir, dir)).should be_true
       end
     end
   end
@@ -147,7 +144,12 @@ describe Mulberry::App do
 
   describe "#device_build" do
 
+    before :each do
+      Dir.chdir @app.name
+    end
+
     after :each do
+      Dir.chdir Mulberry::Directories.root
       FakeWeb.clean_registry
     end
 

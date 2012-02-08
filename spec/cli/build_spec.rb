@@ -55,7 +55,7 @@ describe Builder::Build do
         [ 'iphone', 'www', 'javascript', 'dojo', 'dojo.js' ],
         [ 'iphone', 'www', 'javascript', 'toura', 'base.js' ],
         [ 'iphone', 'www', 'javascript', 'client', 'base.js' ],
-        [ 'iphone', 'www', 'javascript', 'toura', 'app', 'TouraConfig.js' ],
+        [ 'iphone', 'www', 'javascript', 'toura', 'AppConfig.js' ],
         [ 'iphone', 'www', 'javascript', 'vendor', 'haml.js' ]
       ].each do |path|
         File.exists?(File.join(@bundle[:location], path)).should be_true
@@ -68,7 +68,7 @@ describe Builder::Build do
 
     it "should properly generate the pagedef data" do
       page_defs = File.read(File.join(@bundle[:location], 'iphone', 'www', 'data', 'pagedefs.js'))
-      page_defs.should include 'toura.pagedefs = '
+      page_defs.should include 'toura.pageDef('
       @page_defs.each do |page_def|
         page_defs.should include page_def
       end
@@ -122,7 +122,7 @@ describe Builder::Build do
         [ 'ipad', 'www', 'javascript', 'dojo', 'dojo.js' ],
         [ 'ipad', 'www', 'javascript', 'toura', 'base.js' ],
         [ 'ipad', 'www', 'javascript', 'client', 'base.js' ],
-        [ 'ipad', 'www', 'javascript', 'toura', 'app', 'TouraConfig.js' ],
+        [ 'ipad', 'www', 'javascript', 'toura', 'AppConfig.js' ],
         [ 'ipad', 'www', 'javascript', 'vendor', 'haml.js' ]
       ].each do |path|
         File.exists?(File.join(@bundle[:location], path)).should be_true
@@ -135,7 +135,7 @@ describe Builder::Build do
 
     it "should properly generate the page def data" do
       page_defs = File.read(File.join(@bundle[:location], 'ipad', 'www', 'data', 'pagedefs.js'))
-      page_defs.should include 'toura.pagedefs = '
+      page_defs.should include 'toura.pageDef('
       @page_defs.each do |page_def|
         page_defs.should include page_def
       end
@@ -188,7 +188,7 @@ describe Builder::Build do
         [ 'android', 'assets', 'www', 'javascript', 'dojo', 'dojo.js' ],
         [ 'android', 'assets', 'www', 'javascript', 'toura', 'base.js' ],
         [ 'android', 'assets', 'www', 'javascript', 'client', 'base.js' ],
-        [ 'android', 'assets', 'www', 'javascript', 'toura', 'app', 'TouraConfig.js' ],
+        [ 'android', 'assets', 'www', 'javascript', 'toura', 'AppConfig.js' ],
         [ 'android', 'assets', 'www', 'javascript', 'vendor', 'haml.js' ]
       ].each do |path|
         File.exists?(File.join(@bundle[:location], path)).should be_true
@@ -201,7 +201,7 @@ describe Builder::Build do
 
     it "should properly generate the page def data" do
       page_defs = File.read(File.join(@bundle[:location], 'android', 'assets', 'www', 'data', 'pagedefs.js'))
-      page_defs.should include 'toura.pagedefs = '
+      page_defs.should include 'toura.pageDef('
       @page_defs.each do |page_def|
         page_defs.should include page_def
       end

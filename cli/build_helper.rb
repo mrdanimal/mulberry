@@ -41,7 +41,8 @@ module Mulberry
 
     def config_settings
       add_ota_to_config_settings({
-        'id' => Mulberry.escape_single_quote(@config['name'])
+        'id' => Mulberry.escape_single_quote(@config['name']),
+        'sibling_nav' => false
       })
     end
 
@@ -136,7 +137,7 @@ module Mulberry
           :theme_dir => theme_dir
         ).render
       rescue Sass::SyntaxError => err
-        puts "SASS ERROR: #{err.to_s}"
+        puts "SASS ERROR on line #{err.sass_line} of #{err.sass_filename}:\n #{err.to_s}"
       end
     end
 

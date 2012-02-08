@@ -18,7 +18,7 @@ describe TouraAPP do
     it "should point to important directories" do
       root = TouraAPP::Directories.root
 
-      [ :javascript, :page_defs, :data_fixtures, :build_root, :dojo, :profiles ].each do |d|
+      [ :javascript, :page_defs, :data_fixtures, :build_root, :dojo, :profiles, :themes ].each do |d|
         dir = TouraAPP::Directories.send(d.to_s)
         dir.should match root
       end
@@ -41,9 +41,9 @@ describe TouraAPP do
     end
 
     describe "#config" do
-      it "should return the location of the TouraConfig template" do
+      it "should return the location of the toura._Config template" do
         f = TouraAPP::Templates.config
-        f.should match 'TouraConfig'
+        f.should match 'AppConfig'
         File.exists?(f).should be_true
       end
     end
@@ -52,10 +52,10 @@ describe TouraAPP do
   describe TouraAPP::Generators do
     describe "#page_defs" do
       it "should return a page defs JS string based on what it is provided" do
-        str = TouraAPP::Generators.page_defs({ 'foo' => 'bar' })
-        str.should include 'toura.pagedefs = '
-        str.should include 'foo'
+        str = TouraAPP::Generators.page_defs({ 'foo' => { 'bar' => 'baz' }})
+        str.should include "toura.pageDef('foo'"
         str.should include 'bar'
+        str.should include 'baz'
       end
     end
 
@@ -90,6 +90,11 @@ describe TouraAPP do
         html = TouraAPP::Generators.index_html :disable_back_button => true
         html.should match 'toura.features.disableBackButton = true;'
       end
+
+      it "should include a title if one is provided" do
+        html = TouraAPP::Generators.index_html({ :title => 'Overriding the Title' })
+        html.should include 'Overriding the Title'
+      end
     end
 
     describe "#data" do
@@ -100,14 +105,20 @@ describe TouraAPP do
     end
 
     describe "#config" do
-      it "should return a TouraConfig file" do
+      it "should return a toura._Config file" do
         c = TouraAPP::Generators.config('ios', 'phone')
-        c.should match /dojo\.provide\('toura\.app\.TouraConfig'\);/
+        c.should match /dojo\.provide\('toura\._Config'\);/
         c.should match "phone"
         c.should match "ios"
       end
 
-      # TODO: how to test the actual contents of this file?
+      it "should allow enabling or disabling sibling nav" do
+        c = TouraAPP::Generators.config('ios', 'phone', { 'sibling_nav' => false });
+        c.should include 'siblingNav : false'
+
+        c = TouraAPP::Generators.config('ios', 'phone', { 'sibling_nav' => true });
+        c.should include 'siblingNav : true'
+      end
     end
   end
 end

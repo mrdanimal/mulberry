@@ -1,5 +1,5 @@
 # install.sh: Installation script for OSX
-PACKAGES='git chromedriver'
+PACKAGES='git chromedriver android-sdk'
 
 XCODEFILE=$(which xed)
 RVMFILE=$(which rvm)
@@ -20,15 +20,15 @@ function check_or_install_brew_pkg() {
 	fi
 }
 
-
-if [ "$XCODEFILE" ]
+# Due to bug in xcode install xed may not be in path
+# ref http://stackoverflow.com/questions/7317785/terminal-xed-command-missing-after-new-xcode-install
+if [ "$XCODEFILE" ] || [ -x "/Developer/usr/bin/xed" ]
 then
 	echo "XCode is installed..."
 else
 	echo "XCode is not installed. Please install XCode 4.3+ from http://itunes.apple.com/us/app/xcode/id448457090?mt=12"
 	exit 1
 fi
-
 
 if [ "$RVMFILE" ]
 then
@@ -130,7 +130,6 @@ else
 	brew install android-sdk
 fi
 
-:q
 if [[ $(cat ~/Documents/PhoneGapLib/VERSION ) =~ '1.3.0' ]]
 then
 	echo "PhoneGap 1.3.0 is installed."

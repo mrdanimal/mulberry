@@ -41,8 +41,16 @@ module TouraAPP
       File.join(self.app, 'tmp', 'build')
     end
 
+    def self.js_builds
+      File.join(self.root, 'js_builds')
+    end
+
     def self.dojo
       File.join(self.javascript, "dojo-release-#{TouraAPP.dojo_version}-src")
+    end
+
+    def self.themes
+      File.join(@root, 'cli', 'themes')
     end
   end
 
@@ -56,13 +64,19 @@ module TouraAPP
     end
 
     def self.config
-      File.join(self.root, 'TouraConfig.js.mustache')
+      File.join(self.root, 'AppConfig.js.mustache')
     end
   end
 
   class Generators
     def self.page_defs(page_defs)
-      "toura.pagedefs = #{JSON.pretty_generate(page_defs)};"
+      str = ''
+
+      page_defs.each do |page_def_name, config|
+        str << "toura.pageDef('#{page_def_name}', #{JSON.pretty_generate(config)});\n\n"
+      end
+
+      str
     end
 
     def self.index_html(params = {})
@@ -83,15 +97,34 @@ module TouraAPP
         'force_streaming'     =>  false,
         'force_local'         =>  false,
         'skip_version_check'  =>  false,
-        'local_data_url'      =>  false,
         'app_version'         =>  TouraAPP::version,
-        'os'                  =>  os,
-        'device_type'         =>  device_type,
         'debug'               =>  false,
-        'force_local'         =>  false
+        'force_local'         =>  false,
+        'sibling_nav'         =>  true,
+        'postscript'          =>  '',
+        'locale'              =>  'en-us'
       }
 
       settings = defaults.merge(binding)
+
+      base_config = {
+        'id'                  =>  settings['id'],
+        'locale'              =>  settings['locale'],
+        'buildDate'           =>  settings['build_date'],
+        'appVersion'          =>  settings['app_version'],
+        'updateUrl'           =>  settings['update_url'],
+        'versionUrl'          =>  settings['version_url'],
+      }
+
+      unless os.nil? or device_type.nil?
+        # only set device config if values were provided
+        base_config['device'] = {
+          'type'              =>  device_type,
+          'os'                =>  os
+        }
+      end
+
+      settings['base_config'] = JSON.pretty_generate(base_config)
 
       Mustache.render(tmpl, settings)
     end

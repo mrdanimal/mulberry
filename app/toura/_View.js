@@ -5,6 +5,7 @@ dojo.provide('toura._View');
  * The base view class, to be inherited by all views.
  */
 
+dojo.require('toura.Device');
 dojo.require('dijit._Widget');
 dojo.require('dijit._Templated');
 dojo.require('toura._Nls');
@@ -12,10 +13,24 @@ dojo.require('toura.app.Config');
 
 dojo.require('toura.ui.Scrollable');
 dojo.require('toura.ui.Clickable');
+dojo.require('vendor.mustache');
 
 (function() {
 
-var _tmplCache = {};
+var _tmplCache = {},
+    templateStringTests = {
+      'haml' : {
+        firstChars : [ '.', '%' ],
+        tmplFn : Haml
+      },
+
+      'mustache' : {
+        firstChars : [ '{', '<' ],
+        tmplFn : function(tmpl) {
+          return dojo.partial(Mustache.render, tmpl);
+        }
+      }
+    };
 
 dojo.declare('toura._View', [ dijit._Widget, dijit._Templated, toura._Nls ], {
   templateString : '%div',
@@ -27,7 +42,7 @@ dojo.declare('toura._View', [ dijit._Widget, dijit._Templated, toura._Nls ], {
     this.inherited(arguments);
 
     if (!this.device) {
-      this.device = toura.app.Config.get('device');
+      this.device = toura.Device;
     }
 
     this.phone = this.device.type === 'phone';
@@ -37,7 +52,17 @@ dojo.declare('toura._View', [ dijit._Widget, dijit._Templated, toura._Nls ], {
   _skipNodeCache : true,
 
   _stringRepl : function(tmpl) {
-    var t = _tmplCache[tmpl] = (_tmplCache[tmpl] || Haml(tmpl));
+    var t = _tmplCache[tmpl];
+
+    if (!t) {
+      dojo.forIn(templateStringTests, function(lang, settings) {
+        if (t) { return; }
+        if (dojo.indexOf(settings.firstChars, tmpl[0]) > -1) {
+          t = _tmplCache[tmpl] = settings.tmplFn(tmpl);
+        }
+      });
+    }
+
     return t(this);
   },
 

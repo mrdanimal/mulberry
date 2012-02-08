@@ -1,13 +1,11 @@
 dojo.provide('toura.app.Has');
 
+dojo.require('toura.Device');
+
 toura.app.Has = function() {
-  var device = toura.app.Config.get('device');
+  var device = toura.Device;
 
   return {
-    cssBackgroundContain : function() {
-      return !(device.os === 'android' && device.version === '2-1');
-    },
-
     html5Player : function() {
       return device.os !== 'android';
     },

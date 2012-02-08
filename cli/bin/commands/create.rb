@@ -1,3 +1,5 @@
+require 'cli/bin/commands/base'
+
 module Mulberry
   module Command
     class Create < Mulberry::Command::Base
@@ -21,6 +23,10 @@ module Mulberry
           },
 
           :store      => {
+            :creator  =>  Mulberry::CodeCreator
+          },
+
+          :model      => {
             :creator  =>  Mulberry::CodeCreator
           },
 

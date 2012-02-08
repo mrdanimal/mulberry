@@ -37,11 +37,11 @@ beforeEach(function() {
   dojo.registerModulePath('data', '../../data-fixtures');
   dojo.registerModulePath('fixtures', '../../fixtures');
 
+  dojo.require('toura._Config');
   dojo.require('toura.Utilities');
   dojo.require('toura.app.Data');
   dojo.require('toura.app.Config');
   dojo.require('dojo.cache');
-  dojo.require('toura.app.Config');
   dojo.require('toura.app.Has');
 
   toura = toura || {};
@@ -58,17 +58,17 @@ beforeEach(function() {
   dataAPI = toura.app.Data = dataAPI || new toura.app.Data(toura.data.local.items);
 
   nodeForController = function(c) {
-    var node, 
+    var node,
         map = {
         'Images1'       : 'node-image_gallery',
-        'Videos1'       : 'node-videos', 
+        'Videos1'       : 'node-videos',
         'Audios1'       : 'node-audio_list',
         'GoogleMap1'    : 'node-location_map',
         'FeedList'      : 'node-feed_list',
         'LocationList'  : 'node-locations',
         'Default'       : 'node-about'
       };
-      
+
     if (map[c]) {
       node = dataAPI.getModel(map[c]);
     }
@@ -172,6 +172,7 @@ beforeEach(function() {
 
   allDevices = function(cb) {
     dojo.forEach(devices, function(d) {
+      toura.Device = d;
       toura.app.Config.set('device', d);
       cb(d);
     });
