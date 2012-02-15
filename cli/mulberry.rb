@@ -217,9 +217,7 @@ module Mulberry
           )
         end
       else
-        # remove toura-specific stuff from the base.scss file
-        theme_base = File.join(base, 'themes', 'default', 'base.scss')
-        contents = File.read(theme_base)
+        # TODO: remove toura-specific stuff from the base.scss file
 
 
         # create the "empty" base.js, routes.js, and a starter component
