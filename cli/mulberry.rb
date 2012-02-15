@@ -162,8 +162,11 @@ module Mulberry
         subdirs.each { |d| FileUtils.mkdir File.join(dir, d) }
       end
 
-      # copy over the toura themes dir
+      # make the style dir
       FileUtils.mkdir File.join(base, 'style')
+      FileUtils.cp (File.join(Mulberry::Framework::Directories.app, 'base.scss'), File.join(base, 'style'))
+
+      # copy over the toura themes dir
       FileUtils.cp_r( File.join(mulberry_base, 'themes'),
                       File.join(base, 'style', 'themes'))
 
