@@ -163,7 +163,9 @@ module Mulberry
       end
 
       # copy over the toura themes dir
-      FileUtils.cp_r(File.join(mulberry_base, 'themes'), base)
+      FileUtils.mkdir File.join(base, 'style')
+      FileUtils.cp_r( File.join(mulberry_base, 'themes'),
+                      File.join(base, 'style', 'themes'))
 
       # create the config.yml
       original_config = File.read File.join(mulberry_base, 'templates', CONFIG)
@@ -216,9 +218,6 @@ module Mulberry
         theme_base = File.join(base, 'themes', 'default', 'base.scss')
         contents = File.read(theme_base)
 
-        File.open(theme_base, 'w') do |f|
-          f.write contents.split('// toura only').first
-        end
 
         # create the "empty" base.js, routes.js, and a starter component
         Mulberry::CodeCreator.new('base', base, 'base')
