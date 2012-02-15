@@ -127,14 +127,15 @@ module Mulberry
       true
     end
 
-    def theme_dir
+    def style_dir
       File.join(@source_dir, 'style')
     end
 
     def create_css
+
       begin
         Builder::CSSMaker.new(
-          :theme_dir => theme_dir
+          :style_dir => style_dir
         ).render
       rescue Sass::SyntaxError => err
         puts "SASS ERROR on line #{err.sass_line} of #{err.sass_filename}:\n #{err.to_s}"
