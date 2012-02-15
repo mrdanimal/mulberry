@@ -128,10 +128,7 @@ module Mulberry
     end
 
     def theme_dir
-      root_dir = @config['theme'].has_key?('root_dir') ?
-        @config['theme']['root_dir'] : File.join(@source_dir, 'themes')
-
-      File.join(root_dir, theme_name)
+      File.join(@source_dir, 'style')
     end
 
     def create_css
