@@ -52,6 +52,7 @@ beforeEach(function() {
   mulberry.app.Has = dojo.isFunction(mulberry.app.Has) ? mulberry.app.Has() : mulberry.app.Has;
   dataAPI = toura.Data = dataAPI || new toura.Data(toura.data.local.items);
 
+  mulberry.app.Config.registerConfig(mulberry._Config);
 
   nodeForController = function(c) {
     var node,
