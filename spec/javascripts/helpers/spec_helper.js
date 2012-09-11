@@ -1,9 +1,3 @@
-require('/dojo-release-1.6.0-src/dojo/dojo.js');
-require('/vendor/haml.js');
-require('/fixtures/tour.js');
-require('/mulberry/_Logging.js');
-require('/toura/AppConfig.js');
-
 var dataAPI,
     nodeForController,
     isWidgetRegistered,
@@ -24,11 +18,6 @@ var dataAPI,
       { os : 'ios', type : 'tablet' },
       { os : 'android', type : 'phone' }
     ];
-
-mulberry = {};
-toura = {};
-toura.data = {};
-mulberry.features = mulberry.features || {};
 
 // this might need to be removed in dojo 1.7
 delete window.require;
@@ -56,7 +45,7 @@ beforeEach(function() {
   };
 
   mulberry.app.Config.set('app', toura.data.local.app);
-  
+
   mulberry.app.Has = dojo.isFunction(mulberry.app.Has) ? mulberry.app.Has() : mulberry.app.Has;
   dataAPI = toura.Data = dataAPI || new toura.Data(toura.data.local.items);
 
@@ -79,14 +68,14 @@ beforeEach(function() {
 
     return node;
   };
-  
+
   capabilityTestSetup = function() {
     dojo.require('mulberry.containers.Page');
     dojo.require('mulberry.containers.Region');
-    
+
     toura.capabilities = toura.capabilities || {};
     toura.components = toura.components || {};
-    
+
     mulberry.registerCapabilityNamespace(toura.capabilities);
     mulberry.registerComponentNamespace(toura.components);
   };

@@ -11,11 +11,34 @@
 #   - dist/**/*.js
 #
 src_files:
-  - app/dojo-release-1.6.0-src/dojo/dojo.js
-  - app/vendor/haml.js
-  - app/fixtures/tour.js
-  - app/mulberry/_Logging.js
-  - app/toura/AppConfig.js
+  - dojo-release-1.6.0-src/dojo/dojo.js
+  - vendor/haml.js
+  - fixtures/shim.js
+  - fixtures/tour.js
+  - mulberry/_Logging.js
+  - toura/AppConfig.js
+
+# src_dir
+#
+# Source directory path. Your src_files must be returned relative to this path. Will use root if left blank.
+# Default: project root
+#
+# EXAMPLE:
+#
+# src_dir: public
+#
+src_dir: app
+
+# spec_dir
+#
+# Spec directory path. Your spec_files must be returned relative to this path.
+# Default: spec/javascripts
+#
+# EXAMPLE:
+#
+# spec_dir: spec/javascripts
+#
+spec_dir: spec/javascripts
 
 # stylesheets
 #
@@ -57,24 +80,3 @@ helpers:
 spec_files:
   - '**/*[sS]pec.js'
 
-# src_dir
-#
-# Source directory path. Your src_files must be returned relative to this path. Will use root if left blank.
-# Default: project root
-#
-# EXAMPLE:
-#
-# src_dir: public
-#
-src_dir:
-
-# spec_dir
-#
-# Spec directory path. Your spec_files must be returned relative to this path.
-# Default: spec/javascripts
-#
-# EXAMPLE:
-#
-# spec_dir: spec/javascripts
-#
-spec_dir: spec/app
