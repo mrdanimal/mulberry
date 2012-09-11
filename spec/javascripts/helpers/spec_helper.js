@@ -39,6 +39,9 @@ beforeEach(function() {
   mulberry = mulberry || {};
   mulberry.app = mulberry.app || {};
 
+  dojo.destroy('test');
+  dojo.place('<div id=test></div>', dojo.body(), 'first');
+
   mulberry.app.UI = mulberry.app.UI || {
     hasTouch : true,
     set : function() { }
