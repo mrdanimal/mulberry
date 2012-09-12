@@ -30,6 +30,7 @@ dojo.declare('toura.components.Favorites', mulberry._Component, {
   },
 
   _deleteFavorite : function(id, deleteNode) {
+    toura.User.getFavorites().removeFavorite(id);
     dojo.publish('/favorite/remove', [ id ]);
     dojo.destroy(deleteNode.parentNode);
   }
