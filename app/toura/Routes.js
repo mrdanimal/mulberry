@@ -202,7 +202,7 @@ dojo.require('mulberry.Device');
               "mulberry", "mulberry", mulberry.app.Config.get("locale")
             ).FAVORITES,
             pageDef : 'favorites',
-            favorites : toura.user.getFavorites().load(),
+            favorites : toura.User.getFavorites().load(),
             backgroundImage : appBackgroundImage()
           });
 
