@@ -26,6 +26,8 @@ describe("toura.components.Favorites", function() {
     t = document.getElementById('test');
 
     if (c) { c.destroy(); }
+
+    mulberry.app.UI.hasTouch = true;
   });
 
   it("should generate the component", function() {
@@ -97,7 +99,7 @@ describe("toura.components.Favorites", function() {
       });
 
       deleteBtn.deleting = true;
-      click = getEventHandlers(deleteBtn, 'touchstart', deleteBtn.domNode)[0];
+      click = getEventHandler(deleteBtn, 'touchstart', deleteBtn.domNode);
       click(fakeEventObj);
 
       expect(spy).toHaveBeenCalledWith(deleteBtn.objId);
