@@ -122,6 +122,3 @@ dojo.declare('toura.user.Favorites', null, {
 
 }());
 
-dojo.subscribe('/app/ready', function() {
-  toura.user.Favorites = new toura.user.Favorites();
-});

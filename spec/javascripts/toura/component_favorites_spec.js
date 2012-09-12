@@ -8,7 +8,7 @@ describe("toura.components.Favorites", function() {
 
   beforeEach(function() {
     dojo.require('toura.components.Favorites');
-    dojo.require('toura.user.Favorites');
+    dojo.require('toura.User');
 
     if (!ds) {
       ds = mulberry.app.DeviceStorage;
@@ -17,7 +17,8 @@ describe("toura.components.Favorites", function() {
 
     ds.set('favorites', null);
 
-    if (!favs) { favs = toura.user.Favorites = new toura.user.Favorites(); }
+    favs = toura.User.getFavorites();
+
     favs.empty();
 
     node = dataAPI.getModel(id);

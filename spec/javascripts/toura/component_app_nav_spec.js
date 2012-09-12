@@ -4,9 +4,9 @@ describe("app nav component", function() {
   beforeEach(function() {
     dojo.require('toura.components.AppNav');
     dojo.require('toura.URL');
-    dojo.require('toura.user.Favorites');
+    dojo.require('toura.User');
 
-    favs = toura.user.Favorites = favs || new toura.user.Favorites();
+    favs = toura.User.getFavorites();
     mulberry.app.Config.set('app', {});
 
     url = toura.URL;

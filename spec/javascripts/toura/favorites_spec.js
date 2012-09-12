@@ -2,7 +2,7 @@ describe("favorites API", function() {
   var api, data, ds, node, id = 'node-image_gallery';
 
   beforeEach(function() {
-    dojo.require('toura.user.Favorites');
+    dojo.require('toura.User');
     dojo.require('mulberry.app.DeviceStorage');
     dojo.require('toura.Data');
 
@@ -16,7 +16,7 @@ describe("favorites API", function() {
     ds.set('favorites', null);
 
     if (!api) {
-      api = new toura.user.Favorites();
+      api = toura.User.getFavorites();
     }
 
     api.empty();

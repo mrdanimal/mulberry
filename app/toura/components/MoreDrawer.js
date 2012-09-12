@@ -3,7 +3,7 @@ dojo.provide('toura.components.MoreDrawer');
 dojo.require('mulberry._Component');
 dojo.require('mulberry.app.PhoneGap');
 dojo.require('toura.Sharing');
-dojo.require('toura.user.Favorites');
+dojo.require('toura.User');
 dojo.require('toura.components.buttons.HomeButton');
 dojo.require('toura.components.buttons.SearchButton');
 dojo.require('toura.components.buttons.FontSize');
@@ -83,7 +83,7 @@ dojo.declare('toura.components.MoreDrawer', mulberry._Component, {
   },
 
   _createMailLink : function() {
-   
+
     if (!this.email) { return; }
     dojo.attr(this.email, 'href', 'mailto:?' + dojo.objectToQuery({
       subject : mulberry.app.Config.get('app').name,
@@ -162,7 +162,7 @@ dojo.declare('toura.components.MoreDrawer', mulberry._Component, {
     if (!this.node) { return; }
 
     var n = this.node,
-        api = toura.user.Favorites,
+        api = toura.User.getFavorites(),
         isFav = api.isFavorite(n),
         action = isFav ? 'removeFavorite' : 'addFavorite';
 
@@ -173,7 +173,7 @@ dojo.declare('toura.components.MoreDrawer', mulberry._Component, {
   _setNodeAttr : function(node) {
     this.node = node;
     if (this.favorite) {
-      this.favorite.checked = toura.user.Favorites.isFavorite(node);
+      this.favorite.checked = toura.User.getFavorites().isFavorite(node);
     }
 
     this._createMailLink();
