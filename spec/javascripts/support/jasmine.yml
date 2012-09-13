@@ -52,7 +52,7 @@ spec_dir: spec/javascripts
 #   - stylesheets/*.css
 #
 stylesheets:
-  - stylesheets/**/*.css
+  - fixtures/testing.css
 
 # helpers
 #
