@@ -19,10 +19,6 @@ var dataAPI,
       { os : 'android', type : 'phone' }
     ];
 
-// this might need to be removed in dojo 1.7
-delete window.require;
-window.require = undefined;
-
 beforeEach(function() {
   dojo.registerModulePath('mulberry', '../../mulberry');
   dojo.registerModulePath('toura', '../../toura');
