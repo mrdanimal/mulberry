@@ -1,3 +1,6 @@
 #test {
-  display: none;
+  position: absolute;
+  overflow: hidden;
+  width: 0;
+  height: 0;
 }
