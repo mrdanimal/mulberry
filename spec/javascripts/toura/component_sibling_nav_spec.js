@@ -34,6 +34,7 @@ describe("sibling nav component", function() {
       ]
     };
 
+    mockUI();
     routerMock();
   });
 
@@ -99,7 +100,6 @@ describe("sibling nav component", function() {
     it("should listen for click on buttons in non-touch environments", function() {
       mulberry.app.UI.hasTouch = false;
       c = C();
-
       var prevHandler = getEventHandler(c, 'click', c.prevButton);
       var nextHandler = getEventHandler(c, 'click', c.nextButton);
 
@@ -114,7 +114,6 @@ describe("sibling nav component", function() {
 
       var spy = spyOn(mulberry.app.Router, 'go');
       var prevHandler = getEventHandler(c, 'click', c.prevButton);
-
 
       prevHandler();
       expect(spy).toHaveBeenCalledWith(node.siblings[0].url, true);

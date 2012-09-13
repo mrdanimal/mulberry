@@ -109,7 +109,7 @@ beforeEach(function() {
   };
 
   getEventHandlers = function(instance, evt, el) {
-    var matches = dojo.filter(instance._connects, function(c) {
+    var matches = instance._connects.filter(function(c) {
       c = c[0];
       return c[1] === evt && (el ? c[0] === el : true);
     });
@@ -141,6 +141,9 @@ beforeEach(function() {
       }
     };
 
+  };
+
+  mockUI = function() {
     mulberry.app.UI = {
       supportsCssBackgroundContain : function() { return true; },
       viewport : {
@@ -181,4 +184,5 @@ beforeEach(function() {
       cb(d);
     });
   };
+
 });
