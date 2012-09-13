@@ -1,6 +1,4 @@
 #test {
-  position: absolute;
   overflow: hidden;
-  width: 0;
-  height: 0;
+  height: 100px;
 }
