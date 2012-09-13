@@ -8,6 +8,10 @@ describe("debug tools", function() {
     dojo.empty(t);
   });
 
+  afterEach(function() {
+    mulberry.features.debugToolbar = false;
+  });
+
   it("should place the debug components at the specified element", function() {
     mulberry.app._Debug(t);
     expect(t.querySelector('.component.debug-tools')).toBeTruthy();
