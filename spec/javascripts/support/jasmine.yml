@@ -78,5 +78,24 @@ helpers:
 #   - **/*[sS]pec.js
 #
 spec_files:
-  - '**/*[sS]pec.js'
-
+#  - '**/*[sS]pec.js'
+  - 'mulberry/capability_spec.js'
+#  - 'mulberry/component_spec.js'
+#  - 'mulberry/config_spec.js'
+#  - 'mulberry/containers_layout_box_spec.js'
+#  - 'mulberry/containers_page_spec.js'
+#  - 'mulberry/containers_region_spec.js'
+#  - 'mulberry/containers_screen_spec.js'
+#  - 'mulberry/debug_spec.js'
+#  - 'mulberry/device_spec.js'
+#  - 'mulberry/device_storage_spec.js'
+#  - 'mulberry/model_spec.js'
+#  - 'mulberry/page_factory_spec.js'
+#  - 'mulberry/pagedef_spec.js'
+#  - 'mulberry/phonegap_spec.js'
+#  - 'mulberry/router_spec.js'
+#  - 'mulberry/stores_spec.js'
+#  - 'mulberry/ui_background_image_spec.js'
+#  - 'mulberry/ui_spec.js'
+#  - 'mulberry/utilities_spec.js'
+#  - 'mulberry/view_spec.js'
