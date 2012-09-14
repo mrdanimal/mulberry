@@ -1,11 +1,12 @@
 before_script:
   - 'sudo apt-get update'
-  - 'sudo apt-get install chromium-browser'
-  - 'sh -e /etc/init.d/xvfb start'
+  - 'sudo apt-get install libqt4-dev'
+  - 'sudo apt-get install qt4-qmake'
+  - 'sudo update-alternatives --config qmake # and select Qt4 qmake'
+  - 'bundle exec rake builder:app_dev'
 rvm:
   - ree
 script:
-  - 'bundle exec rake travis'
+  - 'jasmine-headless-webkit'
 env:
   - DISPLAY=':99.0' # for xvfb & jasmine/evergreen
-  - JASMINE_BROWSER=chrome
