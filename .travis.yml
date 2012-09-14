@@ -3,10 +3,10 @@ before_script:
   - 'sudo apt-get install libqt4-dev'
   - 'sudo apt-get install qt4-qmake'
   - 'sudo update-alternatives --config qmake # and select Qt4 qmake'
-  - 'bundle exec rake builder:app_dev'
 rvm:
   - ree
 script:
-  - 'jasmine-headless-webkit'
+  - 'bundle exec rake travis'
 env:
   - DISPLAY=':99.0' # for xvfb & jasmine/evergreen
+  - JASMINE_BROWSER=chrome
