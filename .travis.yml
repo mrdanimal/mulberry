@@ -1,6 +1,5 @@
 before_script:
   - 'sudo apt-get update'
-  - 'sudo apt-get install chromium-browser'
   - 'sh -e /etc/init.d/xvfb start'
 rvm:
   - ree
@@ -8,3 +7,4 @@ script:
   - 'bundle exec rake travis'
 env:
   - DISPLAY=':99.0' # for xvfb & jasmine/evergreen
+  - JASMINE_BROWSER=chrome
