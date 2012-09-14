@@ -10,12 +10,13 @@ task :ci do
   did_fail = false
 
 #  ['builder:app_dev', 'spec', 'jasmine:ci', 'jshint'].each do |task|
-  ['builder:app_dev', 'jasmine:ci'].each do |task|
+  ['builder:app_dev'].each do |task|
     Rake::Task[task].invoke
 	  did_fail = true unless $?.exitstatus == 0
   end
 
-  Kernel.exit(1) if did_fail
+  test_failed = system('guard')
+  Kernel.exit(1) if did_fail || test_failed
 end
 
 task :travis do

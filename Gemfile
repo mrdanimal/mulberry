@@ -13,6 +13,8 @@ gem 'sass', '~> 3.1.20'
 gem 'sinatra', '1.3.2'
 gem 'guid'
 gem 'jasmine'
+gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i
+gem 'guard-jasmine'
 
 group :development, :test do
   gem 'rake', '0.9.2'
@@ -24,7 +26,6 @@ group :development do
 end
 
 group :test do
-  gem 'evergreen', :require => false
   gem 'factory_girl', :require => false
   gem 'fakefs', :require => false
   gem 'jshintrb', '1.1', :git => 'git://github.com/Toura/jshintrb.git', :require => false
