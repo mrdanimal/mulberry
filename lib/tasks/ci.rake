@@ -7,22 +7,20 @@ end
 
 task :ci do
 
-  did_fail = false
+  setup_fail = false
 
 #  ['builder:app_dev', 'spec', 'jasmine:ci', 'jshint'].each do |task|
-  ['builder:app_dev', 'jasmine:ci'].each do |task|
+  ['builder:app_dev'].each do |task|
     Rake::Task[task].invoke
-	  did_fail = true unless $?.exitstatus == 0
+	  setup_fail = true unless $?.exitstatus == 0
   end
 
-  Kernel.exit(1) if did_fail
+  test_fail = system('jasmine-headless-webkit')
+
+  Kernel.exit(1) if setup_fail || test_fail
 end
 
 task :travis do
-  puts "Grabbing chromedriver..."
-  mkdir_p "/tmp/bin"
-  system "cd /tmp/bin && wget http://chromium.googlecode.com/files/chromedriver_linux32_18.0.995.0.zip && unzip chromedriver_linux32_18.0.995.0.zip"
-
   root = Mulberry::Framework::Directories.root
 
   # Repo comes without a local.props, so specs fail

@@ -23,17 +23,13 @@ group :development do
 end
 
 group :test do
-#  gem 'jasmine', '1.2.0'
-#  gem 'jasmine-phantom'
   gem 'jasmine'
-  gem 'jasmine-phantom'
   gem 'jasmine-headless-webkit'
-  #gem 'jasmine-headless-webkit', :git => 'git://github.com/johnbintz/jasmine-headless-webkit.git'
-  gem 'factory_girl', :require => false
-  gem 'fakefs', :require => false
-  gem 'jshintrb', '1.1.1', :git => 'git://github.com/Toura/jshintrb.git', :require => false
-  #gem 'racc' # For CYGWIN to compile nokogiri
-  gem 'rspec', '2.6.0'
-  gem 'fakeweb', :require => false
-  gem 'webmock', :require => false
+#  gem 'factory_girl', :require => false
+#  gem 'fakefs', :require => false
+#  gem 'jshintrb', '1.1.1', :git => 'git://github.com/Toura/jshintrb.git', :require => false
+#  #gem 'racc' # For CYGWIN to compile nokogiri
+#  gem 'rspec', '2.6.0'
+#  gem 'fakeweb', :require => false
+#  gem 'webmock', :require => false
 end
