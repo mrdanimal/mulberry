@@ -9,6 +9,7 @@ task :ci do
 
   did_fail = false
 
+#  ['builder:app_dev', 'spec', 'jasmine:ci', 'jshint'].each do |task|
   ['builder:app_dev', 'jasmine:ci'].each do |task|
     Rake::Task[task].invoke
 	  did_fail = true unless $?.exitstatus == 0
