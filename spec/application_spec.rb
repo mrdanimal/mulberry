@@ -100,6 +100,14 @@ describe Mulberry::Framework do
         html = Mulberry::Framework::Generators.index_html({ :data_filename => 'data/tour.js' })
         html.should include 'data/tour.js'
       end
+
+      it "should append the device_type in a query string to AppConfig.js if the build isn't for android" do
+        html = Mulberry::Framework::Generators.index_html({ :device_os => 'android' })
+        html.should_not include '/AppConfig.js?device_type='
+
+        html = Mulberry::Framework::Generators.index_html({ :device_os => 'ios' })
+        html.should include '/AppConfig.js?device_type='
+      end
     end
 
     describe "#data" do
