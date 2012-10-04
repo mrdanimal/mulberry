@@ -368,6 +368,12 @@ describe Builder::Build do
         @bundle = @b.completed_steps[:close][:bundle]
       end
 
+      it "should not append a query string to the AppConfig.js url" do
+        html = File.read(File.join(@bundle[:location], 'android', 'assets', 'www', 'index.html'))
+        html.should include 'AppConfig.js'
+        html.should_not include 'AppConfig.js?'
+      end
+
       it "should generate all the required files" do
         @bundle[:location].should_not be_nil
 
