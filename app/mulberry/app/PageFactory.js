@@ -2,6 +2,8 @@ dojo.provide('mulberry.app.PageFactory');
 
 dojo.require('mulberry.Device');
 dojo.require('mulberry.containers.Page');
+dojo.require('toura.pages.FeedPage');
+
 
 dojo.declare('mulberry.app.PageFactory', null, {
   constructor: function(device) {
@@ -31,12 +33,18 @@ dojo.declare('mulberry.app.PageFactory', null, {
       throw ('mulberry.app.PageFactory: The page definition "' + pageDefName + '" does not exist.');
     }
 
-    return new mulberry.containers.Page({
+    return new toura.pages.FeedPage({
       baseObj: obj,
       device: this.device,
-      pageDef: pageDef,
       pageDefName: pageDefName
     });
+
+//    return new mulberry.containers.Page({
+//      baseObj: obj,
+//      device: this.device,
+//      pageDef: pageDef,
+//      pageDefName: pageDefName
+//    });
   }
 });
 

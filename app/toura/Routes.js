@@ -55,7 +55,7 @@ dojo.require('mulberry.Device');
             })
           );
         } catch(e) {
-          console.error("toura.Routes: can't create a page", e, nodeModel);
+          console.error("toura.Routes: can't create a page, Node: ", nodeModel, e.stack);
 
           if (nodeId !== 'node-home') {
             mulberry.app.Router.back();
