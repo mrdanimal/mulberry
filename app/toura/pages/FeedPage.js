@@ -4,11 +4,6 @@ dojo.require('mulberry.containers.Page');
 
 dojo.declare('toura.pages.FeedPage', mulberry.containers.Page, {
 
-  constructor : function() {
-    this.inherited(arguments);
-    console.log('constructor!!!');
-  },
-
   pageDef : {
     "type": "node",
     "screens": [
@@ -21,15 +16,22 @@ dojo.declare('toura.pages.FeedPage', mulberry.containers.Page, {
             "components": [
               "PageNav"
             ]
+          },
+          {
+            "scrollable": true,
+            "components": [
+              "PageHeaderImage",
+              "FeedItemList"
+            ]
           }
         ]
       }
     ]
   },
 
-  prepareData : function() {
-    console.log('arguments', arguments);
-
+  postMixInProperties : function() {
+    this.inherited(arguments);
+    console.log('this.baseObj.feeds[0]', this.baseObj.feeds[0]);
   }
 });
 
