@@ -33,7 +33,7 @@ dojo.declare('mulberry.app.PageFactory', null, {
       throw ('mulberry.app.PageFactory: The page definition "' + pageDefName + '" does not exist.');
     }
 
-    if (pageDefName === 'feed-list-phone') {
+    if (pageDefName === 'feed-list-tablet') {
       return new toura.pages.FeedPage({
         baseObj: obj,
         device: this.device,

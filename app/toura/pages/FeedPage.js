@@ -5,23 +5,38 @@ dojo.require('mulberry.containers.Page');
 dojo.declare('toura.pages.FeedPage', mulberry.containers.Page, {
 
   pageDef : {
-    "type": "node",
-    "screens": [
+    type: 'node',
+    capabilities: [
+      'FeedItemList_FeedItemDetail'
+    ],
+    screens: [
       {
-        "name": "index",
-        "backgroundImage": true,
-        "regions": [
-          {
-            "className": "page-nav",
-            "components": [
-              "PageNav"
+        name: 'index',
+        backgroundImage: false,
+        regions: [{
+            className: 'page-nav',
+            components: [
+              'PageNav'
             ]
           },
           {
-            "scrollable": true,
-            "components": [
-              "PageHeaderImage",
-              "FeedItemList"
+            className: 'main-content',
+            regions: [{
+                className: 'feed-item-list-container',
+                backgroundImage: true,
+                scrollable: true,
+                components: [
+                  'ColumnHeaderImage',
+                  'FeedItemList'
+                ]
+              },
+              {
+                className: 'feed-item-detail-container',
+                scrollable: true,
+                components: [
+                  'FeedItemDetail'
+                ]
+              }
             ]
           }
         ]
