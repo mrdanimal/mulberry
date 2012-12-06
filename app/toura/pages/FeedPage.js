@@ -6,9 +6,6 @@ dojo.declare('toura.pages.FeedPage', mulberry.containers.Page, {
 
   pageDef : {
     type: 'node',
-    capabilities: [
-      'FeedItemList_FeedItemDetail'
-    ],
     screens: [
       {
         name: 'index',
@@ -50,8 +47,23 @@ dojo.declare('toura.pages.FeedPage', mulberry.containers.Page, {
     // Create a baseObj here from the feed (or whatever) with the same
     // structure as a Node. Do any event setup that would normally be handled
     // in a Capability here.
-    //
+
     console.log('this.baseObj.feeds[0]', this.baseObj.feeds[0]);
+  },
+
+  postCreate : function() {
+    this.inherited(arguments);
+    var screen = this.getScreen('index'),
+        feedItemList = screen.getComponent('FeedItemList'),
+        feedItemDetail = screen.getComponent('FeedItemDetail');
+
+    this.connect(feedItemList, 'onPopulate', function() {
+      feedItemDetail.set('item', feedItemList.feed.getItem(0));
+    });
+
+    this.connect(feedItemList, 'onSelect', function(feedId, itemIndex) {
+      feedItemDetail.set('item', feedItemList.feed.getItem(itemIndex));
+    });
   }
 });
 
