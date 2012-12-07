@@ -22,4 +22,7 @@ body {
 @import 'components/base';
 @import 'page_defs/base';
 
+// WIP: Moving page def styles to live with their pages
+@import '../pages/FeedListTablet/feed-list-tablet';
+
 @import 'body';
