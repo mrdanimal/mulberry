@@ -1,0 +1,36 @@
+{
+  type: 'node',
+  screens: [
+    {
+      name: 'index',
+      backgroundImage: false,
+      regions: [{
+          className: 'page-nav',
+          components: [
+            'PageNav'
+          ]
+        },
+        {
+          className: 'main-content',
+          regions: [{
+              className: 'feed-item-list-container',
+              backgroundImage: true,
+              scrollable: true,
+              components: [
+                'ColumnHeaderImage',
+                'FeedItemList'
+              ]
+            },
+            {
+              className: 'feed-item-detail-container',
+              scrollable: true,
+              components: [
+                'FeedItemDetail'
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

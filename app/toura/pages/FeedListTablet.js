@@ -1,45 +1,11 @@
 dojo.provide('toura.pages.FeedListTablet');
 
 dojo.require('mulberry.containers.Page');
+dojo.require('dojo.cache');
 
 dojo.declare('toura.pages.FeedListTablet', mulberry.containers.Page, {
 
-  pageDef : {
-    type: 'node',
-    screens: [
-      {
-        name: 'index',
-        backgroundImage: false,
-        regions: [{
-            className: 'page-nav',
-            components: [
-              'PageNav'
-            ]
-          },
-          {
-            className: 'main-content',
-            regions: [{
-                className: 'feed-item-list-container',
-                backgroundImage: true,
-                scrollable: true,
-                components: [
-                  'ColumnHeaderImage',
-                  'FeedItemList'
-                ]
-              },
-              {
-                className: 'feed-item-detail-container',
-                scrollable: true,
-                components: [
-                  'FeedItemDetail'
-                ]
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  },
+  pageDef : dojo.fromJson(dojo.cache('toura.pages', 'FeedListTablet/feed-list-tablet.json')),
 
   postMixInProperties : function() {
     this.inherited(arguments);
