@@ -11,7 +11,7 @@ dojo.require('toura.Sharing');
 dojo.require('toura.URL');
 dojo.require('toura.capabilities._base');
 dojo.require('toura.components._base');
-dojo.require('toura.pages.FeedPage');
+dojo.require('toura.pages.FeedListTablet');
 
 toura.data = toura.data || {};
 

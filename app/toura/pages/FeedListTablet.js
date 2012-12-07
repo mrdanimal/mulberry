@@ -1,8 +1,8 @@
-dojo.provide('toura.pages.FeedPage');
+dojo.provide('toura.pages.FeedListTablet');
 
 dojo.require('mulberry.containers.Page');
 
-dojo.declare('toura.pages.FeedPage', mulberry.containers.Page, {
+dojo.declare('toura.pages.FeedListTablet', mulberry.containers.Page, {
 
   pageDef : {
     type: 'node',

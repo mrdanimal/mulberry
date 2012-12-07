@@ -2,7 +2,7 @@ dojo.provide('mulberry.app.PageFactory');
 
 dojo.require('mulberry.Device');
 dojo.require('mulberry.containers.Page');
-dojo.require('toura.pages.FeedPage');
+dojo.require('toura.pages.FeedListTablet');
 
 
 dojo.declare('mulberry.app.PageFactory', null, {
@@ -34,7 +34,7 @@ dojo.declare('mulberry.app.PageFactory', null, {
     }
 
     if (pageDefName === 'feed-list-tablet') {
-      return new toura.pages.FeedPage({
+      return new toura.pages.FeedListTablet({
         baseObj: obj,
         device: this.device,
         pageDefName: pageDefName
